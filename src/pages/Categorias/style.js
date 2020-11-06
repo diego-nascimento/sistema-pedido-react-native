@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import Icone from 'react-native-vector-icons/FontAwesome';
 
 export const TitlePage = styled.View`
   width: 100%;
@@ -17,7 +16,7 @@ export const TextTitlePage = styled.Text`
   letter-spacing: 2px;
 `;
 
-export const ProdutosStyle = styled.FlatList`
+export const CategoriaStyle = styled.FlatList`
   margin-top: 20px;
 `;
 
@@ -48,9 +47,4 @@ export const TituloItem = styled.Text`
 `;
 export const DescricaoItem = styled.Text`
   flex: 1;
-`;
-
-export const Icons = styled(Icone)`
-  position: absolute;
-  left: 20px;
 `;

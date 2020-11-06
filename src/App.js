@@ -3,12 +3,15 @@ import React from 'react';
 
 import Routes from './routes';
 import {StatusBar} from 'react-native';
-import {HeaderBackground} from '@react-navigation/stack';
+import {Provider} from 'react-redux';
+import Store from './store/index';
 
 const App = () => {
   return (
     <>
-      <Routes />
+      <Provider store={Store}>
+        <Routes />
+      </Provider>
       <StatusBar backgroundColor="#111" barStyle={'light-content'} />
     </>
   );

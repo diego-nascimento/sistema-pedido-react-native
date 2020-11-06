@@ -6,10 +6,15 @@ import {
   Contato,
   Numero,
   Social,
+  ContainerLogo,
+  Logo,
+  TextoLogo,
 } from './style';
 
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import {Linking, TouchableWithoutFeedback} from 'react-native';
+
+import {Text} from 'react-native';
 
 import api from '../../services/api';
 
@@ -26,8 +31,8 @@ const Header = () => {
     feedEmpresa();
   }, []);
 
-  return (
-    <Wrapper>
+  return empresa !== null ? (
+    <>
       <ContainerContato>
         <Contatos>
           <Contato>
@@ -58,7 +63,13 @@ const Header = () => {
           </TouchableWithoutFeedback>
         </Contatos>
       </ContainerContato>
-    </Wrapper>
+      <ContainerLogo>
+        <Logo source={require('../../assets/RPC-JP_Logo.png')} />
+        <TextoLogo>{empresa.nome}</TextoLogo>
+      </ContainerLogo>
+    </>
+  ) : (
+    <Text>Carregando...</Text>
   );
 };
 

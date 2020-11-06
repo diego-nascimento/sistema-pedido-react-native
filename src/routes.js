@@ -4,13 +4,19 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 const Stack = createStackNavigator();
 
-import Produtos from './pages/Produtos/produtos';
+import Categorias from './pages/Categorias/Categorias';
+import Produtos from './pages/Produtos/Produtos';
+import Cart from './pages/Cart/Cart';
 
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: 0}}>
-        <Stack.Screen name="produtos" component={Produtos} />
+      <Stack.Navigator
+        screenOptions={{headerShown: 0}}
+        initialRouteName="Categorias">
+        <Stack.Screen name="Categorias" component={Categorias} />
+        <Stack.Screen name="Produtos" component={Produtos} />
+        <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
   );

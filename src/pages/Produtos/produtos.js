@@ -15,12 +15,17 @@ import {
 
 import {connect} from 'react-redux';
 import * as CartActions from '../../store/modules/cart/actions';
-import {TouchableHighlight, TouchableWithoutFeedback} from 'react-native';
+import {
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  Animated,
+} from 'react-native';
 import ButtonCard from '../../Components/ButtonCart/ButtonCart';
 
 const Produtos = ({route, navigation, dispatch}) => {
   const [categoria, setCategoria] = React.useState(route.params.categoria);
   const [produtos, setProdutos] = React.useState([]);
+  const [ItemPosition] = React.useState(new Animated.Value(200));
 
   React.useEffect(() => {
     setCategoria(route.params.categoria);
@@ -41,9 +46,15 @@ const Produtos = ({route, navigation, dispatch}) => {
   }
 
   function renderItem({item}) {
+    Animated.spring(ItemPosition, {
+      toValue: 0,
+      bounciness: 20,
+      speed: 10,
+      useNativeDriver: true,
+    }).start();
     return (
       <TouchableHighlight onPress={() => addProduto(item)}>
-        <ItemContainer>
+        <ItemContainer style={{transform: [{translateX: ItemPosition}]}}>
           <ImageItem source={{uri: item.foto_id.url}} />
           <ContainerTextsItems>
             <TituloItem>{item.nome}</TituloItem>
@@ -58,7 +69,8 @@ const Produtos = ({route, navigation, dispatch}) => {
     <>
       <Header />
       <TitlePage>
-        <TouchableWithoutFeedback onPress={() => navigation.pop()}>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('Categorias')}>
           <Icons name="arrow-left" size={25} color="white" />
         </TouchableWithoutFeedback>
 

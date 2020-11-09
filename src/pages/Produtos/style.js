@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import Icone from 'react-native-vector-icons/FontAwesome';
+import {Animated} from 'react-native';
 
 export const TitlePage = styled.View`
   width: 100%;
@@ -21,7 +22,7 @@ export const ProdutosStyle = styled.FlatList`
   margin-top: 20px;
 `;
 
-export const ItemContainer = styled.View`
+export const ItemContainer = styled(Animated.View)`
   width: 100%;
   padding: 20px;
   border: 1px solid black;

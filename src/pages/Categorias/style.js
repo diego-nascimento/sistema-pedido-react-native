@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Animated} from 'react-native';
 
 export const TitlePage = styled.View`
   width: 100%;
@@ -21,7 +21,7 @@ export const CategoriaStyle = styled.FlatList`
   margin-top: 20px;
 `;
 
-export const ItemContainer = styled.View`
+export const ItemContainer = styled(Animated.View)`
   width: 100%;
   padding: 20px;
   border: solid black;

@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
+import {Animated} from 'react-native';
 
 export const Wrapper = styled.View`
   background: green;
@@ -16,7 +16,8 @@ export const Container = styled.View`
 `;
 
 export const HeaderTitulo = styled.View`
-  width: 100%;
+  width: 96%;
+  align-self: center;
   align-items: center;
   justify-content: center;
   background: white;
@@ -40,12 +41,9 @@ export const Total = styled.Text`
 export const List = styled.FlatList`
   width: 100%;
   background: white;
-  margin-bottom: 20px;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
 `;
 
-export const ItemContainer = styled.View`
+export const ItemContainer = styled(Animated.View)`
   width: 97%;
   padding: 20px;
   border: solid black;
@@ -56,8 +54,8 @@ export const ItemContainer = styled.View`
 `;
 
 export const ImageItem = styled.Image`
-  width: 80px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 7px;
 `;
 
@@ -73,4 +71,51 @@ export const TituloItem = styled.Text`
 `;
 export const PrecoQuantidade = styled.Text`
   flex: 1;
+  font-size: 16px;
+`;
+
+export const BotaoVoltar = styled.TouchableHighlight`
+  position: absolute;
+  align-self: flex-start;
+  left: 20px;
+  padding: 10px;
+  border-radius: 50px;
+  background: black;
+`;
+
+export const ContainerFinalizar = styled.View`
+  width: 96%;
+  align-self: center;
+  background: white;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  border: solid black;
+  border-width: 1px;
+  padding-top: 10px;
+`;
+
+export const BotaoFinalizar = styled.TouchableOpacity`
+  width: 90%;
+  padding: 20px;
+  background: black;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TextoFinalizar = styled.Text`
+  color: white;
+  font-size: 16px;
+`;
+
+export const AlterarQuantidade = styled.View`
+  align-items: center;
+`;
+export const Quantidade = styled.Text`
+  font-size: 14px;
+  border: solid black;
+  padding: 5px 10px;
 `;

@@ -1,28 +1,25 @@
-export function AdicionarAoCarrinho(produto){
+export function AdicionarAoCarrinho(produto) {
   return {
     type: '@cart/add',
-    produto
-  }
+    produto,
+  };
 }
 
-export function RemoverDoCarrinho(produto){
+export function RemoverDoCarrinho(produto) {
   return {
-    type: '@cart/remove', 
-    produto: produto
-  }
+    type: '@cart/remove',
+    produto: produto,
+  };
 }
 
-export function PegarCarrinhoLocalStorage(){
+export function PegarCarrinhoLocalStorage() {
   return {
-    type: '@cart/localstorage'
-  }
+    type: '@cart/localstorage',
+  };
 }
 
-export function LimparCarrinho(){
+export function LimparCarrinho() {
   return {
-    type: '@cart/clean'
-  }
+    type: '@cart/clean',
+  };
 }
-
-
-

@@ -11,11 +11,13 @@ import {
   ContainerTextsItems,
   TituloItem,
 } from './style';
-import {TouchableHighlight} from 'react-native';
+
+import {TouchableHighlight, Animated} from 'react-native';
 import ButtonCard from '../../Components/ButtonCart/ButtonCart';
 
 const Categorias = ({navigation}) => {
   const [categorias, setCategorias] = React.useState([]);
+  const [ItemPosition] = React.useState(new Animated.Value(300));
 
   React.useEffect(() => {
     Api.get('categorias').then((response) => {
@@ -23,14 +25,26 @@ const Categorias = ({navigation}) => {
     });
   }, []);
 
+  React.useEffect(() => {
+    Animated.spring(ItemPosition, {
+      toValue: 0,
+      bounciness: 30,
+      speed: 10,
+      useNativeDriver: true,
+    }).start();
+  });
+
   function NavigateToProduto(item) {
-    navigation.push('Produtos', {categoria: item._id});
+    navigation.navigate('Produtos', {categoria: item._id});
   }
 
   function renderItem({item}) {
     return (
       <TouchableHighlight onPress={() => NavigateToProduto(item)}>
-        <ItemContainer>
+        <ItemContainer
+          style={{
+            transform: [{translateY: ItemPosition}],
+          }}>
           <ImageItem source={{uri: item.foto_id.url}} />
           <ContainerTextsItems>
             <TituloItem>{item.nome}</TituloItem>

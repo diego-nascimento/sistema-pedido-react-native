@@ -13,3 +13,21 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   z-index: 99;
 `;
+
+export const LittleView = styled.View`
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  background: green;
+  bottom: -2px;
+  right: -2px;
+  border-radius: 7.5px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Numero = styled.Text`
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+`;

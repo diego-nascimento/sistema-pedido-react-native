@@ -27,7 +27,7 @@ export const ItemContainer = styled.View`
   border: 1px solid black;
   flex-direction: row;
   align-items: center;
-  background-color: red;
+  background-color: green;
 `;
 
 export const ImageItem = styled.Image`

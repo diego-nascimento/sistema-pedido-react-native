@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 const Stack = createStackNavigator();
 
 import Categorias from './pages/Categorias/Categorias';
-import Produtos from './pages/Produtos/Produtos';
+import Produtos from './pages/Produtos/produtos';
 import Cart from './pages/Cart/Cart';
 
 const Routes = () => {

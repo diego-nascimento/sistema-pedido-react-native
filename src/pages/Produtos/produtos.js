@@ -21,6 +21,7 @@ import ButtonCard from '../../Components/ButtonCart/ButtonCart';
 const Produtos = ({route, navigation, dispatch}) => {
   const [categoria, setCategoria] = React.useState(route.params.categoria);
   const [produtos, setProdutos] = React.useState([]);
+
   React.useEffect(() => {
     setCategoria(route.params.categoria);
   }, [route.params.categoria]);

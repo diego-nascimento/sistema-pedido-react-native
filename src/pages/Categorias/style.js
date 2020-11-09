@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import {StyleSheet} from 'react-native';
 
 export const TitlePage = styled.View`
   width: 100%;
@@ -23,7 +24,8 @@ export const CategoriaStyle = styled.FlatList`
 export const ItemContainer = styled.View`
   width: 100%;
   padding: 20px;
-  border: 1px solid black;
+  border: solid black;
+  border-width: ${StyleSheet.hairlineWidth + 'px'};
   flex-direction: row;
   align-items: center;
   background-color: red;

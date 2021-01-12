@@ -30,7 +30,7 @@ export default function cart(state = [], action) {
         }
       });
 
-    case '@case/clean':
+    case '@cart/clean':
       return [];
 
     default:

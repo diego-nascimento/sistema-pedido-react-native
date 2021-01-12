@@ -24,6 +24,7 @@ export const Contato = styled.View`
 export const Numero = styled.Text`
   color: #ddd;
   font-size: 12px;
+  font-family: 'RobotoSlab-Medium';
 `;
 
 export const Social = styled.View`
@@ -47,7 +48,7 @@ export const Logo = styled.Image`
 export const TextoLogo = styled.Text`
   font-size: 25px;
   color: #fff;
-  font-weight: bold;
   letter-spacing: 2px;
   margin-top: 10px;
+  font-family: 'Courgette';
 `;

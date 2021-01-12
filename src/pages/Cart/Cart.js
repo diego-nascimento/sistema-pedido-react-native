@@ -90,8 +90,11 @@ const Cart = ({produtos, total, navigation, dispatch}) => {
           alwaysBounceHorizontal={true}
         />
         <ContainerFinalizar>
-          <BotaoFinalizar>
-            <TextoFinalizar>Finalizar</TextoFinalizar>
+          <BotaoFinalizar
+            disabled={total > 0 ? false : true}
+            Estado={total > 0 ? false : true}
+            onPress={() => navigation.navigate('Dados')}>
+            <TextoFinalizar>CheckOut</TextoFinalizar>
           </BotaoFinalizar>
         </ContainerFinalizar>
       </Container>

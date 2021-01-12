@@ -11,6 +11,7 @@ import {
   ContainerTextsItems,
   TituloItem,
   Icons,
+  Preco,
 } from './style';
 
 import {connect} from 'react-redux';
@@ -59,6 +60,7 @@ const Produtos = ({route, navigation, dispatch}) => {
           <ContainerTextsItems>
             <TituloItem>{item.nome}</TituloItem>
             <DescricaoItem> {item.descricao}</DescricaoItem>
+            <Preco>{'R$' + item.preco}</Preco>
           </ContainerTextsItems>
         </ItemContainer>
       </TouchableHighlight>

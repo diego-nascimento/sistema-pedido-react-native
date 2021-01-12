@@ -11,10 +11,10 @@ export const TitlePage = styled.View`
 
 export const TextTitlePage = styled.Text`
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   text-transform: uppercase;
-  font-weight: bold;
   letter-spacing: 2px;
+  font-family: 'Courgette';
 `;
 
 export const CategoriaStyle = styled.FlatList`
@@ -28,7 +28,7 @@ export const ItemContainer = styled(Animated.View)`
   border-width: ${StyleSheet.hairlineWidth + 'px'};
   flex-direction: row;
   align-items: center;
-  background-color: red;
+  background: rgba(255, 0, 0, 0.75);
 `;
 
 export const ImageItem = styled.Image`
@@ -44,9 +44,10 @@ export const ContainerTextsItems = styled.View`
 `;
 export const TituloItem = styled.Text`
   font-size: 20px;
-  font-weight: bold;
+  font-family: 'Courgette';
   text-transform: capitalize;
 `;
 export const DescricaoItem = styled.Text`
   flex: 1;
+  font-family: 'RobotoSlab-Medium';
 `;

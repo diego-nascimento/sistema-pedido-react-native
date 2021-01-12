@@ -7,6 +7,8 @@ const Stack = createStackNavigator();
 import Categorias from './pages/Categorias/Categorias';
 import Produtos from './pages/Produtos/produtos';
 import Cart from './pages/Cart/Cart';
+import Dados from './pages/Dados/Dados';
+import Finalizado from './pages/PedidoFinalizado/PedidoFinalizado';
 
 const Routes = () => {
   return (
@@ -17,6 +19,8 @@ const Routes = () => {
         <Stack.Screen name="Categorias" component={Categorias} />
         <Stack.Screen name="Produtos" component={Produtos} />
         <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Dados" component={Dados} />
+        <Stack.Screen name="Finalizado" component={Finalizado} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -6,7 +6,7 @@ import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import Store from './store/index';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <Provider store={Store}>

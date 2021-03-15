@@ -24,8 +24,16 @@ import {Animated} from 'react-native';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import * as CartActions from '../../store/modules/cart/actions';
+import {IProduto} from '../../Interfaces/IProduto';
 
-const Cart = ({produtos, total, navigation, dispatch}) => {
+interface ICart {
+  produtos: Array<IProduto>;
+  total: number;
+  navigation: any;
+  dispatch: any;
+}
+
+const Cart: React.FC<ICart> = ({produtos, total, navigation, dispatch}) => {
   const [ItemsAnimation] = React.useState(new Animated.Value(100));
 
   React.useEffect(() => {
@@ -37,23 +45,22 @@ const Cart = ({produtos, total, navigation, dispatch}) => {
     }).start();
   }, [ItemsAnimation]);
 
-  function addProduto(produto) {
+  const addProduto = (produto: IProduto) => {
     dispatch(CartActions.AdicionarAoCarrinho(produto));
-  }
+  };
 
-  function RemoveProduto(produto) {
+  const RemoveProduto = (produto: IProduto) => {
     dispatch(CartActions.RemoverDoCarrinho(produto._id));
-  }
+  };
 
-  function renderItem({item: produto}) {
+  function renderItem(produto: IProduto) {
     return (
       <>
-        <ItemContainer style={{transform: [{translateX: ItemsAnimation}]}}>
+        <ItemContainer style={{ transform: [{ translateX: ItemsAnimation }] }}>
           <ImageItem source={{uri: produto.foto_id.url}} />
           <ContainerTextsItems>
             <TituloItem>{produto.nome}</TituloItem>
             <PrecoQuantidade> R$ {produto.preco}</PrecoQuantidade>
-            <TituloItem>SubTotal: R$ {produto.subtotal.toFixed(2)}</TituloItem>
           </ContainerTextsItems>
           <AlterarQuantidade>
             <TouchableWithoutFeedback onPress={() => addProduto(produto)}>
@@ -85,8 +92,8 @@ const Cart = ({produtos, total, navigation, dispatch}) => {
 
         <List
           data={produtos}
-          keyExtractor={(produto) => produto._id}
-          renderItem={renderItem}
+          keyExtractor={(produto: IProduto) => produto._id}
+          renderItem={({item}:any) => renderItem(item)}
           alwaysBounceHorizontal={true}
         />
         <ContainerFinalizar>
@@ -102,13 +109,13 @@ const Cart = ({produtos, total, navigation, dispatch}) => {
   );
 };
 
-const StateToProps = (state) => ({
-  produtos: state.cart.map((produto) => ({
+const StateToProps = (state: any) => ({
+  produtos: state.cart.map((produto: IProduto) => ({
     ...produto,
     subtotal: produto.preco * produto.quantidade,
   })),
 
-  total: state.cart.reduce((total, produto) => {
+  total: state.cart.reduce((total: number, produto: IProduto) => {
     return total + produto.preco * produto.quantidade;
   }, 0),
 });

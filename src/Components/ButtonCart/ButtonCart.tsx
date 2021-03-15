@@ -4,7 +4,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 import {ToastAndroid} from 'react-native';
 
-const ButtonCart = ({navigation, tamanho_carrinho}) => {
+interface ICart {
+  navigation: any;
+  tamanho_carrinho: number;
+}
+
+const ButtonCart: React.FC<ICart> = ({navigation, tamanho_carrinho}) => {
   function NavegarPagina() {
     if (tamanho_carrinho === 0) {
       ToastAndroid.show('Carrinho está Vazio !', ToastAndroid.CENTER);
@@ -23,7 +28,7 @@ const ButtonCart = ({navigation, tamanho_carrinho}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   tamanho_carrinho: state.cart.length,
 });
 

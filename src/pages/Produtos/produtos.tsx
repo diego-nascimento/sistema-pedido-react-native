@@ -22,10 +22,21 @@ import {
   Animated,
 } from 'react-native';
 import ButtonCard from '../../Components/ButtonCart/ButtonCart';
+import {IProduto} from '../../Interfaces/IProduto';
 
-const Produtos = ({route, navigation, dispatch}) => {
+interface IProdutoPage {
+  route: any;
+  navigation: any;
+  dispatch: any;
+}
+
+interface IItem {
+  item: IProduto;
+}
+
+const Produtos: React.FC<IProdutoPage> = ({route, navigation, dispatch}) => {
   const [categoria, setCategoria] = React.useState(route.params.categoria);
-  const [produtos, setProdutos] = React.useState([]);
+  const [produtos, setProdutos] = React.useState(null);
   const [ItemPosition] = React.useState(new Animated.Value(200));
 
   React.useEffect(() => {
@@ -42,11 +53,11 @@ const Produtos = ({route, navigation, dispatch}) => {
     });
   }, [categoria]);
 
-  function addProduto(produto) {
+  const addProduto = (produto: IProduto) => {
     dispatch(CartActions.AdicionarAoCarrinho(produto));
-  }
+  };
 
-  function renderItem({item}) {
+  const renderItem = ({item}: IItem) => {
     Animated.spring(ItemPosition, {
       toValue: 0,
       bounciness: 20,
@@ -54,18 +65,20 @@ const Produtos = ({route, navigation, dispatch}) => {
       useNativeDriver: true,
     }).start();
     return (
-      <TouchableHighlight onPress={() => addProduto(item)}>
-        <ItemContainer style={{transform: [{translateX: ItemPosition}]}}>
-          <ImageItem source={{uri: item.foto_id.url}} />
-          <ContainerTextsItems>
-            <TituloItem>{item.nome}</TituloItem>
-            <DescricaoItem> {item.descricao}</DescricaoItem>
-            <Preco>{'R$' + item.preco}</Preco>
-          </ContainerTextsItems>
-        </ItemContainer>
-      </TouchableHighlight>
+      produtos && (
+        <TouchableHighlight onPress={() => addProduto(item)}>
+          <ItemContainer style={{transform: [{translateX: ItemPosition}]}}>
+            <ImageItem source={{uri: item.foto_id.url}} />
+            <ContainerTextsItems>
+              <TituloItem>{item.nome}</TituloItem>
+              <DescricaoItem> {item.descricao}</DescricaoItem>
+              <Preco>{'R$' + item.preco}</Preco>
+            </ContainerTextsItems>
+          </ItemContainer>
+        </TouchableHighlight>
+      )
     );
-  }
+  };
 
   return (
     <>
@@ -75,12 +88,11 @@ const Produtos = ({route, navigation, dispatch}) => {
           onPress={() => navigation.navigate('Categorias')}>
           <Icons name="arrow-left" size={25} color="white" />
         </TouchableWithoutFeedback>
-
         <TextTitlePage>Produtos</TextTitlePage>
       </TitlePage>
       <ProdutosStyle
         data={produtos}
-        keyExtractor={(produto) => produto._id}
+        keyExtractor={(produto: IProduto) => produto._id}
         renderItem={renderItem}
       />
       <ButtonCard navigation={navigation} />

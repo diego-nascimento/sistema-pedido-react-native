@@ -14,9 +14,18 @@ import {
 
 import {TouchableHighlight, Animated} from 'react-native';
 import ButtonCard from '../../Components/ButtonCart/ButtonCart';
+import {ICategoria} from '../../Interfaces/ICategoria';
 
-const Categorias = ({navigation}) => {
-  const [categorias, setCategorias] = React.useState([]);
+interface ICategoriasPage {
+  navigation: any;
+}
+
+interface IItem {
+  item: ICategoria;
+}
+
+const Categorias: React.FC<ICategoriasPage> = ({navigation}) => {
+  const [categorias, setCategorias] = React.useState(null);
   const [ItemPosition] = React.useState(new Animated.Value(300));
 
   React.useEffect(() => {
@@ -34,26 +43,29 @@ const Categorias = ({navigation}) => {
     }).start();
   });
 
-  function NavigateToProduto(item) {
+  const NavigateToProduto = (item: ICategoria) => {
     navigation.navigate('Produtos', {categoria: item._id});
-  }
+  };
 
-  function renderItem({item}) {
+  const renderItem = ({item}: IItem) => {
     return (
-      <TouchableHighlight onPress={() => NavigateToProduto(item)}>
-        <ItemContainer
-          style={{
-            transform: [{translateY: ItemPosition}],
-          }}>
-          <ImageItem source={{uri: item.foto_id.url}} />
-          <ContainerTextsItems>
-            <TituloItem>{item.nome}</TituloItem>
-            <DescricaoItem> {item.descricao}</DescricaoItem>
-          </ContainerTextsItems>
-        </ItemContainer>
-      </TouchableHighlight>
+      categorias && (
+        <TouchableHighlight onPress={() => NavigateToProduto(item)}>
+          <ItemContainer
+            style={{
+              transform: [{translateY: ItemPosition}],
+            }}>
+            <ImageItem source={{uri: item.foto_id.url}} />
+            <ContainerTextsItems>
+              <TituloItem>{item.nome}</TituloItem>
+              <DescricaoItem> {item.descricao}</DescricaoItem>
+            </ContainerTextsItems>
+          </ItemContainer>
+        </TouchableHighlight>
+      )
     );
-  }
+  };
+
   return (
     <>
       <Header />
@@ -62,7 +74,7 @@ const Categorias = ({navigation}) => {
       </TitlePage>
       <CategoriaStyle
         data={categorias}
-        keyExtractor={(categoria) => categoria._id}
+        keyExtractor={(categoria: ICategoria) => categoria._id}
         renderItem={renderItem}
       />
       <ButtonCard navigation={navigation} />

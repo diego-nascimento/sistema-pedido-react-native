@@ -16,11 +16,18 @@ import Icons from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 import * as CartActions from '../../store/modules/cart/actions';
 
-const Finalizado = (props) => {
+interface IFinalizado {
+  dispatch: any;
+  navigation: any;
+}
+
+const Finalizado: React.FC<IFinalizado> = ({dispatch, navigation}) => {
   React.useEffect(() => {
-    props.dispatch(CartActions.LimparCarrinho());
-  });
+    dispatch(CartActions.LimparCarrinho());
+  }, []);
+  
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <Wrapper contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}>
       <Container>
         <Icons name="check" size={150} color="green" />
@@ -31,8 +38,7 @@ const Finalizado = (props) => {
           </FraseBanner>
         </ContainerBanner>
         <ContainerFinalizar>
-          <BotaoFinalizar
-            onPress={() => props.navigation.navigate('Categorias')}>
+          <BotaoFinalizar onPress={() => navigation.navigate('Categorias')}>
             <TextoFinalizar>Novo Pedido</TextoFinalizar>
           </BotaoFinalizar>
         </ContainerFinalizar>

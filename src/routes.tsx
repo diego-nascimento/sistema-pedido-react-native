@@ -10,11 +10,11 @@ import Cart from './pages/Cart/Cart';
 import Dados from './pages/Dados/Dados';
 import Finalizado from './pages/PedidoFinalizado/PedidoFinalizado';
 
-const Routes = () => {
+const Routes: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        screenOptions={{headerShown: 0}}
+        screenOptions={{headerShown: false}}
         initialRouteName="Categorias">
         <Stack.Screen name="Categorias" component={Categorias} />
         <Stack.Screen name="Produtos" component={Produtos} />

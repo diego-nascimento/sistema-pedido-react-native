@@ -1,6 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  Wrapper,
   ContainerContato,
   Contatos,
   Contato,
@@ -10,16 +10,17 @@ import {
   Logo,
   TextoLogo,
 } from './style';
+import {IEmpresa} from '../../Interfaces/IEmpresa';
 
 import Icons from 'react-native-vector-icons/FontAwesome5';
-import {Linking, TouchableWithoutFeedback} from 'react-native';
+import {TouchableWithoutFeedback} from 'react-native';
 
 import {Text} from 'react-native';
 
 import api from '../../services/api';
 
-const Header = () => {
-  const [empresa, setEmpresa] = React.useState([]);
+const Header: React.FC = () => {
+  const [empresa, setEmpresa] = React.useState<IEmpresa | null>(null);
 
   async function feedEmpresa() {
     const response = await api.get('/empresa');

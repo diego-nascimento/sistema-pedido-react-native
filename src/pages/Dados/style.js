@@ -1,13 +1,14 @@
 import styled from 'styled-components/native';
+import { TouchableOpacity } from 'react-native';
 
-export const Wrapper = styled.ScrollView`
+export const Wrapper = styled.KeyboardAvoidingView`
   background: white;
   width: 100%;
   height: 100%;
   flex: 1;
 `;
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   width: 95%;
   height: 95%;
 `;
@@ -40,7 +41,7 @@ export const FormularioContainer = styled.View`
   background: white;
 `;
 
-export const BotaoVoltar = styled.TouchableHighlight`
+export const BotaoVoltar = styled.TouchableOpacity`
   position: absolute;
   align-self: flex-start;
   left: 20px;

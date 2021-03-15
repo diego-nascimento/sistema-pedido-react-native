@@ -27,7 +27,7 @@ export const ItemContainer = styled(Animated.View)`
   border: 1px solid black;
   flex-direction: row;
   align-items: center;
-  background: rgba(0,128,0, .7);
+  background: rgba(0, 128, 0, 0.7);
 `;
 
 export const ImageItem = styled.Image`
